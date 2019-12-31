@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import Navigation from '../Navgation/Navigation';
 import Landing from '../Landing/Landing';
@@ -11,27 +11,26 @@ import Account from '../Account/Account';
 import Admin from '../Admin/Admin';
 
 import * as ROUTE from '../../constants/routes';
+import { withAuthentication } from '../Session';
 
 const App = () => {
-    return (
-        <Router>
-            <div>
-                <Navigation />
+  return (
+    <Router>
+      <div>
+        <Navigation />
 
-                <hr />
+        <hr />
 
-                <Route exact path={ROUTE.LANDING} component={Landing} />
-                <Route path={ROUTE.SIGN_UP} component={SignUp}/>
-                <Route path={ROUTE.SIGN_IN} component={SignIn}/>
-                <Route path={ROUTE.PASSWORD_FORGET} component={PasswordForget}/>
-                <Route path={ROUTE.HOME} component={Home}/>
-                <Route path={ROUTE.ACCOUNT} component={Account}/>
-                <Route path={ROUTE.ADMIN} component={Admin}/>
+        <Route exact path={ROUTE.LANDING} component={Landing} />
+        <Route path={ROUTE.SIGN_UP} component={SignUp} />
+        <Route path={ROUTE.SIGN_IN} component={SignIn} />
+        <Route path={ROUTE.PASSWORD_FORGET} component={PasswordForget} />
+        <Route path={ROUTE.HOME} component={Home} />
+        <Route path={ROUTE.ACCOUNT} component={Account} />
+        <Route path={ROUTE.ADMIN} component={Admin} />
+      </div>
+    </Router>
+  );
+};
 
-            </div>
-
-        </Router>
-    )
-}
-
-export default App;
+export default withAuthentication(App);
