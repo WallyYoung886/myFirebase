@@ -27,6 +27,8 @@ class SignUpFormBase extends Component {
     this.state = { ...initVals };
   }
   onSubmit = event => {
+    event.preventDefault();
+
     const { email, passwordOne } = this.state;
 
     this.props.firebase
@@ -39,7 +41,6 @@ class SignUpFormBase extends Component {
       .catch(error => {
         this.setState({ error });
       });
-    event.preventDefault();
   };
   onChange = event => {
     this.setState({

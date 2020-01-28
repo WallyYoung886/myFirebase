@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 
 import { SignUpLink } from '../SignUp/SignUp';
+import { PasswordForgetLink } from '../PasswordForget/PasswordForget';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 
@@ -11,6 +12,7 @@ const SignIn = () => {
     <div>
       <h1>Sign In</h1>
       <SignInForm />
+      <PasswordForgetLink />
       <SignUpLink />
     </div>
   );
@@ -29,6 +31,7 @@ class SignInFormBase extends Component {
   }
 
   onSubmit = event => {
+    event.preventDefault();
     const { email, password } = this.state;
     this.props.firebase
       .doSignInWithEmailAndPassword(email, password)
@@ -39,7 +42,6 @@ class SignInFormBase extends Component {
       .catch(error => {
         this.setState({ error });
       });
-    event.preventDefault();
   };
 
   onChange = event => {

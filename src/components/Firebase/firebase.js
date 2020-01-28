@@ -21,12 +21,10 @@ class Firebase {
 
   //First, the sign up function (registration) takes email and password parameters for its function signature and uses an official Firebase API endpoint to create a user:
   // *** Auth API ***
-  doCreateUserWithEmailAndPassword = (email, password) => {
+  doCreateUserWithEmailAndPassword = (email, password) =>
     this.auth.createUserWithEmailAndPassword(email, password);
-  };
-  doSignInWithEmailAndPassword = (email, password) => {
+  doSignInWithEmailAndPassword = (email, password) =>
     this.auth.signInWithEmailAndPassword(email, password);
-  };
   //don't need to pass any argument to it, because Firebase knows about the currently authenticated user. If no user is authenticated, nothing will happen when this function is called.
   doSignOut = () => this.auth.signOut();
   doPasswordReset = email => this.auth.sendPasswordResetEmail(email);
